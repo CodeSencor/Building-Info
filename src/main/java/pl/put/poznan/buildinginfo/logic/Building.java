@@ -1,5 +1,6 @@
 ﻿package pl.put.poznan.buildinginfo.logic;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Building implements ILocation {
@@ -67,5 +68,17 @@ public class Building implements ILocation {
             totalLight += level.calculateLight();
         }
         return totalLight;
+    }
+
+    public ArrayList<Room> getHeatExceedRooms(double maxHeatCubeRatio) {
+        ArrayList<Room> badRooms = new ArrayList<>();
+        for (Level level : levels) {
+            for (Room room : level.getRooms()) {
+                if (room.calculateHeat() / calculateCube() > maxHeatCubeRatio) {
+                    badRooms.add(room);
+                }
+            }
+        }
+        return badRooms;
     }
 }

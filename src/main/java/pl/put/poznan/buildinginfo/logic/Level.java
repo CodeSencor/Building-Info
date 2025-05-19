@@ -68,4 +68,8 @@ public class Level implements ILocation {
         }
         return totalLight;
     }
+
+    public ArrayList<Room> getRooms(){
+        return rooms;
+    }
 }
