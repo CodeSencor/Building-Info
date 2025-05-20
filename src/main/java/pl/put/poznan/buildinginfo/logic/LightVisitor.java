@@ -4,7 +4,7 @@ public class LightVisitor implements IVisitor {
 
     @Override
     public double visitRoom(Room room) {
-        return room.getLight();
+        return room.getLight() / room.getArea();
     }
 
     @Override
@@ -13,15 +13,15 @@ public class LightVisitor implements IVisitor {
         for (Room room : level.getRooms()) {
             totalLight += room.acceptVisitor(this);
         }
-        return totalLight;
+        return totalLight / level.getRooms().size();
     }
 
     @Override
     public double visitBuilding(Building building) {
         double totalLight = 0;
         for (Level level : building.getLevels()) {
-            totalLight += level.acceptVisitor(this);
+            totalLight += level.acceptVisitor(this) * level.getRooms().size();
         }
-        return totalLight;
+        return totalLight / building.getLevels().size();
     }
 }
