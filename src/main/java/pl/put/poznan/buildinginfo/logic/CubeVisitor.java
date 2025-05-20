@@ -1,6 +1,6 @@
 package pl.put.poznan.buildinginfo.logic;
 
-public class cubeVisitor implements IVisitor {
+public class CubeVisitor implements IVisitor {
 
     @Override
     public double visitRoom(Room room) {
