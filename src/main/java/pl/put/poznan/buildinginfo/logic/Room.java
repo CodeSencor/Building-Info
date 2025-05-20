@@ -33,22 +33,23 @@ public class Room implements ILocation {
     }
 
     @Override
-    public double calculateArea() {
+    public double acceptVisitor(IVisitor visitor) {
+        return visitor.visitRoom(this);
+    }
+
+    public double getArea() {
         return area;
     }
 
-    @Override
-    public double calculateCube() {
+    public double getCube() {
         return cube;
     }
 
-    @Override
-    public double calculateHeat() {
+    public double getHeating() {
         return heating;
     }
 
-    @Override
-    public double calculateLight() {
+    public double getLight() {
         return light;
     }
 }

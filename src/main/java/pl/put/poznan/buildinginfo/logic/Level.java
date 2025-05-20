@@ -34,39 +34,8 @@ public class Level implements ILocation {
     }
 
     @Override
-    public double calculateArea() {
-        double totalArea = 0;
-        for (Room room : rooms) {
-            totalArea += room.calculateArea();
-        }
-        return totalArea;
-    }
-
-    @Override
-    public double calculateCube() {
-        double totalCube = 0;
-        for (Room room : rooms) {
-            totalCube += room.calculateCube();
-        }
-        return totalCube;
-    }
-
-    @Override
-    public double calculateHeat() {
-        double totalHeat = 0;
-        for (Room room : rooms) {
-            totalHeat += room.calculateHeat();
-        }
-        return totalHeat;
-    }
-
-    @Override
-    public double calculateLight() {
-        double totalLight = 0;
-        for (Room room : rooms) {
-            totalLight += room.calculateLight();
-        }
-        return totalLight;
+    public double acceptVisitor(IVisitor visitor) {
+        return visitor.visitLevel(this);
     }
 
     public ArrayList<Room> getRooms(){

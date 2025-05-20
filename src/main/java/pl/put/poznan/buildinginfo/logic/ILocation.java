@@ -5,11 +5,5 @@ public interface ILocation {
 
     String getName();
 
-    double calculateArea();
-
-    double calculateCube();
-
-    double calculateHeat();
-
-    double calculateLight();
+    double acceptVisitor(IVisitor visitor);
 }
