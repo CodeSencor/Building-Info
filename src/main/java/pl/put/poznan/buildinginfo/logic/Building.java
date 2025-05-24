@@ -43,23 +43,6 @@ public class Building implements ILocation {
     }
 
     /**
-     * Returns all rooms that exceed the heat to volume ratio
-     * @param maxHeatCubeRatio Threshold above which a room is returned
-     * @return List of rooms exceeding the heat to volume ratio
-     */
-    public ArrayList<Room> getHeatExceedRooms(double maxHeatCubeRatio) {
-        ArrayList<Room> badRooms = new ArrayList<>();
-        for (Level level : levels) {
-            for (Room room : level.getRooms()) {
-                if (room.getHeating() / room.getCube() > maxHeatCubeRatio) {
-                    badRooms.add(room);
-                }
-            }
-        }
-        return badRooms;
-    }
-
-    /**
      * Returns the ID of the building
      * @return ID of the building
      */
