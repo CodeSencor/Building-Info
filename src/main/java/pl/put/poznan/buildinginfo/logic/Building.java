@@ -38,10 +38,15 @@ public class Building implements ILocation {
         levels.remove(level);
     }
 
+    public ArrayList<Level> getLevels() {
+        return levels;
+    }
+
     /**
      * Returns the ID of the building
      * @return ID of the building
      */
+
     @Override
     public String getId() {
         return ID;
@@ -56,72 +61,8 @@ public class Building implements ILocation {
         return NAME;
     }
 
-    /**
-     * Calculates the total area of the building
-     * @return Total area of the building
-     */
     @Override
-    public double calculateArea() {
-        double totalArea = 0;
-        for (Level level : levels) {
-            totalArea += level.calculateArea();
-        }
-        return totalArea;
-    }
-
-    /**
-     * Calculates the volume of all the rooms in the building
-     * @return Volume of al the rooms in the building
-     */
-    @Override
-    public double calculateCube() {
-        double totalCube = 0;
-        for (Level level : levels) {
-            totalCube += level.calculateCube();
-        }
-        return totalCube;
-    }
-
-    /**
-     * Calculates the total heat usage of all the rooms in the building.
-     * @return Total heat usage of all the rooms in the building
-     */
-    @Override
-    public double calculateHeat() {
-        double totalHeat = 0;
-        for (Level level : levels) {
-            totalHeat += level.calculateHeat();
-        }
-        return totalHeat;
-    }
-
-    /**
-     * Calculates the total light usage in the building
-     * @return Total light usage in the building
-     */
-    @Override
-    public double calculateLight() {
-        double totalLight = 0;
-        for (Level level : levels) {
-            totalLight += level.calculateLight();
-        }
-        return totalLight;
-    }
-
-    /**
-     * Returns all rooms that exceed the heat to volume ratio
-     * @param maxHeatCubeRatio Threshold above which a room is returned
-     * @return List of rooms exceeding the heat to volume ratio
-     */
-    public ArrayList<Room> getHeatExceedRooms(double maxHeatCubeRatio) {
-        ArrayList<Room> badRooms = new ArrayList<>();
-        for (Level level : levels) {
-            for (Room room : level.getRooms()) {
-                if (room.calculateHeat() / calculateCube() > maxHeatCubeRatio) {
-                    badRooms.add(room);
-                }
-            }
-        }
-        return badRooms;
+    public double acceptVisitor(IVisitor visitor) {
+        return visitor.visitBuilding(this);
     }
 }
