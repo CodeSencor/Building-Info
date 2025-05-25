@@ -1,4 +1,6 @@
-﻿package pl.put.poznan.buildinginfo.logic;
+package pl.put.poznan.buildinginfo.logic;
+
+import pl.put.poznan.buildinginfo.api.model.ILocation;
 
 public class Room implements ILocation {
     private String ID;

@@ -1,6 +1,7 @@
 package pl.put.poznan.buildinginfo.logic;
 
-import java.lang.reflect.Array;
+import pl.put.poznan.buildinginfo.api.model.ILocation;
+
 import java.util.ArrayList;
 
 public class Building implements ILocation {

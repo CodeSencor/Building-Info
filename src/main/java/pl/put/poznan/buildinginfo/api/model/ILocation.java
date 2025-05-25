@@ -1,4 +1,6 @@
-﻿package pl.put.poznan.buildinginfo.logic;
+package pl.put.poznan.buildinginfo.api.model;
+
+import pl.put.poznan.buildinginfo.logic.IVisitor;
 
 public interface ILocation {
     String getId();
