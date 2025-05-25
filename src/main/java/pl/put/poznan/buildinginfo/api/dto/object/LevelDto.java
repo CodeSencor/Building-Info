@@ -1,7 +1,5 @@
-package pl.put.poznan.buildinginfo.api.dto;
+package pl.put.poznan.buildinginfo.api.dto.object;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Getter;
 import pl.put.poznan.buildinginfo.logic.Room;
@@ -12,12 +10,11 @@ import java.util.stream.Collectors;
 
 @Getter
 @JsonPropertyOrder({"id", "name", "rooms"})
-public class LevelDto {
+public class LevelDto implements ILocationDto{
     private final String id;
     private final String name;
     private final List<RoomDto> rooms;
 
-    @JsonCreator
     public LevelDto(String id, String name, ArrayList<Room> rooms) {
         this.id = id;
         this.name = name;
