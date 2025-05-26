@@ -13,7 +13,7 @@ public class Building implements ILocation {
     private ArrayList<Level> levels;
 
     /**
-     * Creates the building object
+     * Creates the building object.
      * @param id The building ID
      * @param name The building name
      * @param levels The list of levels of the building
@@ -25,7 +25,7 @@ public class Building implements ILocation {
     }
 
     /**
-     * Adds a level to the list
+     * Adds a level to the list.
      * @param level The level to be added
      */
     public void addLevel(Level level) {
@@ -33,7 +33,7 @@ public class Building implements ILocation {
     }
 
     /**
-     * Removes a level
+     * Removes a level.
      * @param level Level to be removed
      */
     public void removeLevel(Level level) {
@@ -42,24 +42,24 @@ public class Building implements ILocation {
 
 
     /**
-     * Returns building's levels
+     * Returns building's levels.
+     * @return  List of levels of the building
      */
     public ArrayList<Level> getLevels() {
         return levels;
     }
 
     /**
-     * Returns the ID of the building
+     * Returns the ID of the building.
      * @return ID of the building
      */
-
     @Override
     public String getId() {
         return ID;
     }
 
     /**
-     * Returns the name of the building
+     * Returns the name of the building.
      * @return Name of the building
      */
     @Override
@@ -67,6 +67,11 @@ public class Building implements ILocation {
         return NAME;
     }
 
+    /**
+     * Accepts the visitor.
+     * @param visitor The visitor to be accepted
+     * @return The value retrieved by the visitor
+     */
     @Override
     public double acceptVisitor(IVisitor visitor) {
         return visitor.visitBuilding(this);

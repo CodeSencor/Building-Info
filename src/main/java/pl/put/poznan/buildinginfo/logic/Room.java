@@ -18,7 +18,7 @@ public class Room implements ILocation {
     private double light;
 
     /**
-     * This function returns the Room object
+     * This function returns the Room object.
      * @param id The room id
      * @param name The room name
      * @param area The area of the room
@@ -55,8 +55,8 @@ public class Room implements ILocation {
 
     /**
      * Accepts the visitor.
-     * @param visitor The visitor to be accepted.
-     * @return The value retrieved by the visitor.
+     * @param visitor The visitor to be accepted
+     * @return The value retrieved by the visitor
      */
     @Override
     public double acceptVisitor(IVisitor visitor) {
@@ -64,7 +64,7 @@ public class Room implements ILocation {
     }
 
     /**
-     * Returns the room area
+     * Returns the room area.
      * @return Room area
      */
     public double getArea() {
@@ -72,7 +72,7 @@ public class Room implements ILocation {
     }
 
     /**
-     * Returns the room cubature
+     * Returns the room cubature.
      * @return Room cubature
      */
     public double getCube() {
@@ -81,14 +81,14 @@ public class Room implements ILocation {
 
     /**
      * Returns the room heating requirement.
-     * @return Room heating requirement.
+     * @return Room heating requirement
      */
     public double getHeating() {
         return heating;
     }
 
     /**
-     * Returns the room lighting requirement
+     * Returns the room lighting requirement.
      * @return Room lighting requirement
      */
     public double getLight() {
