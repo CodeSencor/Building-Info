@@ -5,9 +5,6 @@ import java.util.ArrayList;
 public class Building implements ILocation {
     /**
      * This class represents a building.
-     * @param id The building ID
-     * @param name The building name
-     * @param levels The list of levels of the building
      */
     private String ID;
 
@@ -15,6 +12,12 @@ public class Building implements ILocation {
 
     private ArrayList<Level> levels;
 
+    /**
+     * Creates the building object
+     * @param id The building ID
+     * @param name The building name
+     * @param levels The list of levels of the building
+     */
     public Building(String id, String name, ArrayList<Level> levels) {
         this.ID = id;
         this.NAME = name;
