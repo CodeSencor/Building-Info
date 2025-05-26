@@ -1,4 +1,4 @@
-﻿package pl.put.poznan.buildinginfo.logic;
+package pl.put.poznan.buildinginfo.logic;
 
 public interface ILocation {
     String getId();

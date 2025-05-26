@@ -1,6 +1,5 @@
 package pl.put.poznan.buildinginfo.logic;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Building implements ILocation {
@@ -38,6 +37,10 @@ public class Building implements ILocation {
         levels.remove(level);
     }
 
+
+    /**
+     * Returns building's levels
+     */
     public ArrayList<Level> getLevels() {
         return levels;
     }
