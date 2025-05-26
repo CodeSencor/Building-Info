@@ -2,10 +2,10 @@ package pl.put.poznan.buildinginfo.logic;
 
 import java.util.ArrayList;
 
+/**
+ * This class represents a building. It contains an ID, its name and a list of levels that the building is comprised of.
+ */
 public class Building implements ILocation {
-    /**
-     * This class represents a building.
-     */
     private String ID;
 
     private String NAME;
