@@ -24,9 +24,6 @@ jobs:
           mvn clean package -DskipTests
           mvn -B package
 
-      - name: Checkout code
-        uses: actions/checkout@v3
-
       - name: Get project version from POM
         id: get_version
         run: |
