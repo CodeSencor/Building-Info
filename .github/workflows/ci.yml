@@ -8,6 +8,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      javadoc-artifact: javadoc
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -23,6 +25,15 @@ jobs:
         run: |
           mvn clean package -DskipTests
           mvn -B package
+
+      - name: Generate Javadoc
+        run: mvn javadoc:javadoc
+
+      - name: Upload Javadoc Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: javadoc
+          path: target/site/apidocs
 
       - name: Get project version from POM
         id: get_version
@@ -51,3 +62,23 @@ jobs:
           asset_path: target/BuildingInfo-${{ steps.get_version.outputs.version }}.jar
           asset_name: BuildingInfo-${{ steps.get_version.outputs.version }}.jar
           asset_content_type: application/java-archive
+
+  deploy-pages:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Javadoc artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: javadoc
+
+      - name: Prepare Pages artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./target/site/apidocs
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v2
+        with:
+          branch: gh-pages
+          folder: .
