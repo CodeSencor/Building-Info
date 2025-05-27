@@ -75,11 +75,12 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: javadoc
+          path: target/reports/apidocs
 
       - name: Prepare Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: javadoc
+          path: target/reports/apidocs
 
       - name: Deploy to GitHub Pages
         id: deploy
