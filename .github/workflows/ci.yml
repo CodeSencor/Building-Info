@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: javadoc
-          path: target/site/apidocs
+          path: target/reports/apidocs
 
       - name: Get project version from POM
         id: get_version
@@ -79,7 +79,7 @@ jobs:
       - name: Prepare Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: target/site/apidocs
+          path: target/reports/apidocs
 
       - name: Deploy to GitHub Pages
         id: deploy
