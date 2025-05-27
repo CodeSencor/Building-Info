@@ -79,7 +79,7 @@ jobs:
       - name: Prepare Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: target/reports/apidocs
+          path: javadoc
 
       - name: Deploy to GitHub Pages
         id: deploy
