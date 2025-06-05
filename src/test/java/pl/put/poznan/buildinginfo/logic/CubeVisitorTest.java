@@ -23,6 +23,37 @@ public class CubeVisitorTest {
     void setUp() {
         cv = new CubeVisitor();
     }
+
+    @Test
+    void visitRoomTest() {
+        assertEquals(10, cv.visitRoom(
+                new Room("rid", "rname", 0, 10, 0, 0)
+        ));
+    }
+
+    @Test
+    void visitLevelTest() {
+        ArrayList<Room> r = new ArrayList<>();
+        for(int i = 10; i <= 50; i += 10) {
+            r.add(new Room("rid", "rname", 0, i, 0, 0));
+        }
+        assertEquals(150, new Level("lid", "lname", r));
+    }
+
+    @Test
+    void visitBuildingTest() {
+        ArrayList<Level> llist = new ArrayList<>();
+        ArrayList<Room> rlist = new ArrayList<>();
+        for(int i = 10; i <= 50; i += 10) {
+            rlist.add(new Room("rid", "rname", 0, i, 0, 0));
+        }
+        llist.add(new Level("lid", "lname", rlist));
+        assertEquals(
+                150,
+                cv.visitBuilding(new Building("bid", "bname", llist))
+        );
+    }
+
     @Test
     void visitEmptyBuildingTest() {
         Building empty = new Building("empty", "b_name", new ArrayList<>());
