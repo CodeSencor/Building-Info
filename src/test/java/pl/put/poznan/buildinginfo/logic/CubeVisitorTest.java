@@ -37,7 +37,7 @@ public class CubeVisitorTest {
         for(int i = 10; i <= 50; i += 10) {
             r.add(new Room("rid", "rname", 0, i, 0, 0));
         }
-        assertEquals(150, new Level("lid", "lname", r));
+        assertEquals(150, cv.visitLevel(new Level("lid", "lname", r)));
     }
 
     @Test
