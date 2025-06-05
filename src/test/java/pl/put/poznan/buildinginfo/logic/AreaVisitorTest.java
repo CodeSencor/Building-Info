@@ -85,4 +85,26 @@ class AreaVisitorTest {
             verify(mockedLevel).acceptVisitor(this.visitor);
         }
     }
+
+    @Test
+    void visitEmptyBuildingTest() {
+        Building empty = new Building("empty", "b_name", new ArrayList<>());
+        assertEquals(0, visitor.visitBuilding(empty));
+    }
+
+    @Test
+    void visitEmptyLevelsTest() {
+        ArrayList<Level> levels = new ArrayList<>();
+        for(int i = 0; i < 5; ++i) {
+            levels.add(new Level("lvl", "lvl_name", new ArrayList<>()));
+        }
+        Building building = new Building("bid", "bname", levels);
+        assertEquals(0, visitor.visitBuilding(building));
+    }
+
+    @Test
+    void visitEmptyRoomsTest() {
+        Room room = new Room("rname", "rid", 0, 0, 0, 0);
+        assertEquals(0, visitor.visitRoom(room));
+    }
 }
