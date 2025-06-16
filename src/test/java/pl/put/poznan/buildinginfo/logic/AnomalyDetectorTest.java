@@ -23,6 +23,11 @@ class AnomalyDetectorTest {
             for (double j = 1; j < 10; j = j + 3) {
                 Room mockedRoom = mock(Room.class);
                 when(mockedRoom.getHeating()).thenReturn(i*j);
+                when(mockedRoom.getCube()).thenReturn(1.0);
+                when(mockedRoom.acceptVisitor(any(HeatingVisitor.class))).thenAnswer(invocation -> {
+                    HeatingVisitor hv = invocation.getArgument(0);
+                    return hv.visitRoom(mockedRoom);
+                });
                 mockedRooms.add(mockedRoom);
                 this.allRooms.add(mockedRoom);
             }
@@ -44,7 +49,7 @@ class AnomalyDetectorTest {
         for (int i = 0; i < 4; i++) {
             verify(building.getLevels().get(i)).getRooms();
             for (int j = 0; j < 3; j++) {
-                verify(building.getLevels().get(i).getRooms().get(j)).getHeating();
+                verify(building.getLevels().get(i).getRooms().get(j)).acceptVisitor(any(HeatingVisitor.class));
             }
         }
     }
@@ -60,7 +65,7 @@ class AnomalyDetectorTest {
         for (int i = 0; i < 4; i++) {
             verify(building.getLevels().get(i)).getRooms();
             for (int j = 0; j < 3; j++) {
-                verify(building.getLevels().get(i).getRooms().get(j)).getHeating();
+                verify(building.getLevels().get(i).getRooms().get(j)).acceptVisitor(any(HeatingVisitor.class));
             }
         }
     }
