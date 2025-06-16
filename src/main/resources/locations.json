@@ -10,8 +10,8 @@
           {
             "id": "1",
             "name": "room1",
-            "area": 1.0,
-            "cube": 1.0,
+            "area": 0.0,
+            "cube": 0.0,
             "light": 1.0,
             "heating": 1.0
           }
@@ -34,6 +34,14 @@
             "cube": 5.0,
             "light": 6.0,
             "heating": 7.0
+          },
+          {
+            "id": "7",
+            "name": "room7",
+            "area": 4.0,
+            "cube": 1.0,
+            "light": 6.0,
+            "heating": 3.0
           }
         ]
       }

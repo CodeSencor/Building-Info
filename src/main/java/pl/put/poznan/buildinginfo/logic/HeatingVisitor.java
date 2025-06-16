@@ -4,10 +4,10 @@ public class HeatingVisitor implements IVisitor {
 
     @Override
     public double visitRoom(Room room) {
-        if(room.getCube() != 0) {
-            return room.getHeating() / room.getCube();
+        if(room.getCube() == 0) {
+            return 0;
         }
-        return -1;
+        return room.getHeating() / room.getCube();
     }
 
     @Override

@@ -4,6 +4,9 @@ public class LightVisitor implements IVisitor {
 
     @Override
     public double visitRoom(Room room) {
+        if(room.getArea() == 0) {
+            return 0;
+        }
         return room.getLight() / room.getArea();
     }
 
@@ -12,7 +15,7 @@ public class LightVisitor implements IVisitor {
         double totalLight = 0;
         int faultRooms = 0;
         for (Room room : level.getRooms()) {
-            if(room.acceptVisitor(this) == -1) {
+            if(room.acceptVisitor(this) == 0) {
                 faultRooms++;
                 continue;
             }
