@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
 
 import org.junit.jupiter.api.BeforeEach;
 
@@ -17,6 +19,16 @@ public class LightVisitorTest {
         lv = new LightVisitor();
     }
 
+    @Test
+    void testVisitRoom() {
+        Room mockedRoom = mock(Room.class);
+        when(mockedRoom.getLight()).thenReturn(5.0);
+        when(mockedRoom.getArea()).thenReturn(2.0);
+
+        assertEquals(2.5, lv.visitRoom(mockedRoom));
+        verify(mockedRoom).getLight();
+        verify(mockedRoom).getArea();
+    }
     @Test
     void visitRoomTest() {
         assertEquals(10, lv.visitRoom(
