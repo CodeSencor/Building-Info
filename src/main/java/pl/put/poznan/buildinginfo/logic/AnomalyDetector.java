@@ -10,9 +10,11 @@ public class AnomalyDetector {
      */
     public ArrayList<Room> getAnomalies(Building building, double maxHeatCubeRatio) {
         ArrayList<Room> badRooms = new ArrayList<>();
+        HeatingVisitor heatingVisitor = new HeatingVisitor();
         for (Level level : building.getLevels()) {
             for (Room room : level.getRooms()) {
-                if (room.getHeating() > maxHeatCubeRatio) {
+                double heatCubeRatio = room.acceptVisitor(heatingVisitor);
+                if (heatCubeRatio == -1 || heatCubeRatio > maxHeatCubeRatio) {
                     badRooms.add(room);
                 }
             }

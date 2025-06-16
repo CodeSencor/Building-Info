@@ -1,5 +1,8 @@
 package pl.put.poznan.buildinginfo.logic;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 
 /**
@@ -12,13 +15,16 @@ public class Building implements ILocation {
 
     private ArrayList<Level> levels;
 
+    public Building(){}
+
     /**
      * Creates the building object.
      * @param id The building ID
      * @param name The building name
      * @param levels The list of levels of the building
      */
-    public Building(String id, String name, ArrayList<Level> levels) {
+    @JsonCreator
+    public Building(@JsonProperty("id") String id, @JsonProperty("name") String name, @JsonProperty("levels") ArrayList<Level> levels) {
         this.ID = id;
         this.NAME = name;
         this.levels = levels;
