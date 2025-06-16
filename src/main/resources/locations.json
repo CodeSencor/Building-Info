@@ -1,0 +1,42 @@
+[
+  {
+    "id": "3",
+    "name": "building1",
+    "levels": [
+      {
+        "id": "2",
+        "name": "level1",
+        "rooms": [
+          {
+            "id": "1",
+            "name": "room1",
+            "area": 1.0,
+            "cube": 1.0,
+            "light": 1.0,
+            "heating": 1.0
+          }
+        ]
+      }
+    ]
+  },
+    {
+    "id": "4",
+    "name": "building4",
+    "levels": [
+      {
+        "id": "5",
+        "name": "level5",
+        "rooms": [
+          {
+            "id": "6",
+            "name": "room6",
+            "area": 4.0,
+            "cube": 5.0,
+            "light": 6.0,
+            "heating": 7.0
+          }
+        ]
+      }
+    ]
+  }
+]

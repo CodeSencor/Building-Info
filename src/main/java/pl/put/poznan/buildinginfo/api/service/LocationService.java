@@ -1,5 +1,8 @@
 package pl.put.poznan.buildinginfo.api.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import pl.put.poznan.buildinginfo.api.dto.object.BuildingDto;
 import pl.put.poznan.buildinginfo.api.dto.object.ILocationDto;
@@ -11,29 +14,18 @@ import pl.put.poznan.buildinginfo.api.dto.response.IResponseDto;
 import pl.put.poznan.buildinginfo.api.dto.response.VisitorDoubleResponseDto;
 import pl.put.poznan.buildinginfo.logic.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.io.IOException;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
 public class LocationService {
     private ArrayList<ILocation> locationList;
 
-    public LocationService() {
-        this.locationList = new ArrayList<>();
-        Room room = new Room("1", "room1", 1, 1, 1, 1);
-        Room room2 = new Room("1b", "room2", 1.618, 1, 1, 1);
-        locationList.add(room);
-        locationList.add(room2);
-        Level level = new Level("2", "level1", new ArrayList<>());
-        locationList.add(level);
-        level.addRoom(room);
-        Building building = new Building("3", "building1", new ArrayList<>());
-        locationList.add(building);
-        building.addLevel(level);
-
+    @Autowired
+    public LocationService(@Value("${app.location.jsonPath}") String jsonPath) throws IOException {
+        JsonLoader loader = new JsonLoader();
+        this.locationList = new ArrayList<>(loader.loadLocationsFromJson(jsonPath));
     }
 
     private Optional<ILocation> getLocation(String id) {
