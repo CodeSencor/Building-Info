@@ -4,7 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     
-    
+    <packaging>jar</packaging>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -12,8 +13,8 @@
     </parent>
 
     <groupId>pl.put.poznan</groupId>
-    <artifactId>io-project-architecture</artifactId>
-    <version>0.2</version>
+    <artifactId>BuildingInfo</artifactId>
+    <version>0.3.1</version>
 
 	<properties>
         <java.version>11</java.version>
@@ -61,10 +62,41 @@
 
 
     <build>
+        <finalName>BuildingInfo-${project.version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.6.0</version>
+                <configuration>
+                    <outputFile>${project.build.directory}/${project.build.finalName}.jar</outputFile>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.11.2</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals><goal>jar</goal></goals>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
@@ -81,6 +113,5 @@
             <url>https://repo.spring.io/libs-release</url>
         </pluginRepository>
     </pluginRepositories>
-
 
 </project>
