@@ -4,16 +4,27 @@ public class HeatingVisitor implements IVisitor {
 
     @Override
     public double visitRoom(Room room) {
-        return room.getHeating() / room.getCube();
+        if(room.getCube() != 0) {
+            return room.getHeating() / room.getCube();
+        }
+        return -1;
     }
 
     @Override
     public double visitLevel(Level level) {
         double totalHeating = 0;
+        int faultRooms = 0;
         for (Room room : level.getRooms()) {
+            if (room.acceptVisitor(this) == -1) {
+                faultRooms++;
+                continue;
+            }
             totalHeating += room.acceptVisitor(this);
         }
-        return totalHeating / level.getRooms().size();
+        if(faultRooms == level.getRooms().size()) {
+            return 0;
+        }
+        return totalHeating / (level.getRooms().size() - faultRooms);
     }
 
     @Override
