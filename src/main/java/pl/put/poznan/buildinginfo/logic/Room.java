@@ -1,5 +1,8 @@
 package pl.put.poznan.buildinginfo.logic;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * This class represents a single room.
  * It contains information regarding the room ID, name, area, cubature as well as heating and lighting requirements.
@@ -17,6 +20,8 @@ public class Room implements ILocation {
 
     private double light;
 
+    public Room() {}
+
     /**
      * This function returns the Room object.
      * @param id The room id
@@ -26,7 +31,8 @@ public class Room implements ILocation {
      * @param heating The heating requirement of the room
      * @param light The lighting requirement of the room
      */
-    public Room(String id, String name, double area, double cube, double heating, double light){
+    @JsonCreator
+    public Room(@JsonProperty("id") String id, @JsonProperty("name") String name, @JsonProperty("area") double area, @JsonProperty("cube") double cube, @JsonProperty("heating") double heating, @JsonProperty("light") double light){
         this.ID = id;
         this.NAME = name;
         this.area = area;
