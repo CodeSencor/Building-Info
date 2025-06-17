@@ -8,6 +8,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BuildingInfoApplication {
 
     public static void main(String[] args) {
+        if (args.length > 0) {
+            System.setProperty("app.location.jsonPath", args[0]);
+        }
         SpringApplication.run(BuildingInfoApplication.class, args);
     }
 }
